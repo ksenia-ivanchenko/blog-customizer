@@ -22,32 +22,22 @@ export const ArticleParamsForm = () => {
 	const [visible, setVisible] = useState(false);
 	const [params, setParams] = useState(defaultArticleState);
 
-	// const handleParamSelect = (
-	// 	param: Partial<keyof ArticleStateType>,
-	// 	value: OptionType
-	// ) => {
-	// 	setParams({
-	// 		...params,
-	// 		param: value
-	// 	})
-	// };
-
-	// const handleFontSizeSelect = (value: OptionType) => {
-	// 	setParams({
-	// 		...params,
-	// 		fontSizeOption: value,
-	// 	});
-	// };
-
-	// const handleFontFamilySelect = (value: OptionType) => {
-	// 	setParams({
-	// 		...params,
-	// 		fontFamilyOption: value,
-	// 	});
-	// };
+	const handleParamSelect = (
+		param: Partial<keyof ArticleStateType>,
+		value: OptionType
+	) => {
+		setParams({
+			...params,
+			[param]: value,
+		});
+	};
 
 	const changeFormVisibility = () => {
 		setVisible(!visible);
+	};
+
+	const resetParams = () => {
+		setParams(defaultArticleState);
 	};
 
 	return (
@@ -66,33 +56,41 @@ export const ArticleParamsForm = () => {
 						title='шрифт'
 						selected={params.fontFamilyOption}
 						options={fontFamilyOptions}
-						// onChange={handleFontFamilySelect}
+						selectType='fontFamilyOption'
+						onChange={handleParamSelect}
 					/>
 					<RadioGroup
 						selected={params.fontSizeOption}
 						options={fontSizeOptions}
 						name='размер шрифта'
 						title='размер шрифта'
-						// onChange={handleFontSizeSelect}
+						selectType='fontSizeOption'
+						onChange={handleParamSelect}
 					/>
 					<Select
 						title='цвет шрифта'
 						selected={params.fontColor}
 						options={fontColors}
+						selectType='fontColor'
+						onChange={handleParamSelect}
 					/>
 					<Separator></Separator>
 					<Select
 						title='цвет фона'
 						selected={params.backgroundColor}
 						options={backgroundColors}
+						selectType='backgroundColor'
+						onChange={handleParamSelect}
 					/>
 					<Select
 						title='ширина контента'
 						selected={params.contentWidth}
 						options={contentWidthArr}
+						selectType='contentWidth'
+						onChange={handleParamSelect}
 					/>
 					<div className={styles.bottomContainer}>
-						<Button title='Сбросить' type='reset' />
+						<Button title='Сбросить' type='reset' onClick={resetParams} />
 						<Button title='Применить' type='submit' />
 					</div>
 				</form>
