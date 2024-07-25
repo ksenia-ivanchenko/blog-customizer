@@ -2,7 +2,7 @@ import { ArrowButton } from 'components/arrow-button';
 import { Button } from 'components/button';
 
 import styles from './ArticleParamsForm.module.scss';
-import { useState } from 'react';
+import { SyntheticEvent, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { Select } from '../select/Select';
 import {
@@ -18,7 +18,11 @@ import {
 import { Separator } from '../separator/Separator';
 import { RadioGroup } from '../radio-group/RadioGroup';
 
-export const ArticleParamsForm = () => {
+export const ArticleParamsForm = ({
+	changeArticleState,
+}: {
+	changeArticleState: (params: ArticleStateType) => void;
+}) => {
 	const [visible, setVisible] = useState(false);
 	const [params, setParams] = useState(defaultArticleState);
 
@@ -38,8 +42,14 @@ export const ArticleParamsForm = () => {
 
 	const resetParams = () => {
 		setParams(defaultArticleState);
+		changeArticleState(defaultArticleState);
 	};
 
+	const handleSubmit = (e: SyntheticEvent) => {
+		e.preventDefault();
+		changeArticleState(params);
+		changeFormVisibility();
+	};
 	return (
 		<>
 			<ArrowButton
@@ -51,7 +61,7 @@ export const ArticleParamsForm = () => {
 					styles.container,
 					visible ? styles.container_open : null
 				)}>
-				<form className={styles.form}>
+				<form className={styles.form} onSubmit={handleSubmit}>
 					<Select
 						title='шрифт'
 						selected={params.fontFamilyOption}

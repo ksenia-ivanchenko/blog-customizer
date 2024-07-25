@@ -8,7 +8,10 @@ type RadioGroupProps = {
 	name: string;
 	options: OptionType[];
 	selected: OptionType;
-	onChange?: (param: Partial<keyof ArticleStateType>, value: OptionType) => void;
+	onChange?: (
+		param: Partial<keyof ArticleStateType>,
+		value: OptionType
+	) => void;
 	title: string;
 	selectType: Partial<keyof ArticleStateType>;
 };
@@ -16,8 +19,10 @@ type RadioGroupProps = {
 export const RadioGroup = (props: RadioGroupProps) => {
 	const { name, options, selected, onChange, title, selectType } = props;
 
-	const handleChange = (selectType: Partial<keyof ArticleStateType>, option: OptionType) =>
-		onChange?.(selectType, option);
+	const handleChange = (
+		selectType: Partial<keyof ArticleStateType>,
+		option: OptionType
+	) => onChange?.(selectType, option);
 
 	return (
 		<div className={styles.container}>

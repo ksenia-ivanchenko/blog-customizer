@@ -15,14 +15,25 @@ type SelectProps = {
 	selected: OptionType | null;
 	options: OptionType[];
 	placeholder?: string;
-	onChange?: (param: Partial<keyof ArticleStateType>, selected: OptionType) => void;
+	onChange?: (
+		param: Partial<keyof ArticleStateType>,
+		selected: OptionType
+	) => void;
 	onClose?: () => void;
 	title?: string;
 	selectType: Partial<keyof ArticleStateType>;
 };
 
 export const Select = (props: SelectProps) => {
-	const { options, placeholder, selected, onChange, onClose, title, selectType} = props;
+	const {
+		options,
+		placeholder,
+		selected,
+		onChange,
+		onClose,
+		title,
+		selectType,
+	} = props;
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 	const rootRef = useRef<HTMLDivElement>(null);
 	const placeholderRef = useRef<HTMLDivElement>(null);
@@ -39,7 +50,10 @@ export const Select = (props: SelectProps) => {
 		onChange: setIsOpen,
 	});
 
-	const handleOptionClick = (selectType: Partial<keyof ArticleStateType>, option: OptionType) => {
+	const handleOptionClick = (
+		selectType: Partial<keyof ArticleStateType>,
+		option: OptionType
+	) => {
 		setIsOpen(false);
 		onChange?.(selectType, option);
 	};
