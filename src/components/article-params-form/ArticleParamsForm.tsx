@@ -17,11 +17,14 @@ import {
 } from 'src/constants/articleProps';
 import { Separator } from '../separator/Separator';
 import { RadioGroup } from '../radio-group/RadioGroup';
+import { Text } from '../text/Text';
 
 export const ArticleParamsForm = ({
 	changeArticleState,
+	title,
 }: {
 	changeArticleState: (params: ArticleStateType) => void;
+	title?: string;
 }) => {
 	const [visible, setVisible] = useState(false);
 	const [params, setParams] = useState(defaultArticleState);
@@ -62,6 +65,13 @@ export const ArticleParamsForm = ({
 					visible ? styles.container_open : null
 				)}>
 				<form className={styles.form} onSubmit={handleSubmit}>
+					{title && (
+						<>
+							<Text weight={800} size={22} uppercase>
+								{title}
+							</Text>
+						</>
+					)}
 					<Select
 						title='шрифт'
 						selected={params.fontFamilyOption}
