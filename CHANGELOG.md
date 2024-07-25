@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/spasicoxpani/blog-customizer/compare/v1.2.0...v1.3.0) (2024-07-25)
+
+
+### Features
+
+* **article:** добавлено применение выбранных параметров к странице ([fa577c1](https://github.com/spasicoxpani/blog-customizer/commit/fa577c194c137e66369c464ab01cc2a47f2ce87c))
+
 ## [1.2.0](https://github.com/spasicoxpani/blog-customizer/compare/v1.1.0...v1.2.0) (2024-07-25)
 
 
