@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/spasicoxpani/blog-customizer/compare/v1.1.0...v1.2.0) (2024-07-25)
+
+
+### Features
+
+* **form:** добавлено сохранение состояния формы с выбранными параметрами и сброс параметров ([da6b635](https://github.com/spasicoxpani/blog-customizer/commit/da6b635c2a006c2c294cb9badc278e4e71c59847))
+
 ## 1.1.0 (2024-07-24)
 
 
