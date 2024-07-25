@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/spasicoxpani/blog-customizer/compare/v1.3.0...v1.3.1) (2024-07-25)
+
+
+### Bug Fixes
+
+* **stories:** исправлены компоненты для storybook ([5eda64d](https://github.com/spasicoxpani/blog-customizer/commit/5eda64deb1c51711d373e55daa431d392cf32073))
+
 ## [1.3.0](https://github.com/spasicoxpani/blog-customizer/compare/v1.2.0...v1.3.0) (2024-07-25)
 
 
