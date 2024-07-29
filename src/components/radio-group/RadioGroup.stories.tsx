@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { RadioGroup } from './RadioGroup';
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 import { ArticleStateType, OptionType } from 'src/constants/articleProps';
 
 const meta: Meta<typeof RadioGroup> = {

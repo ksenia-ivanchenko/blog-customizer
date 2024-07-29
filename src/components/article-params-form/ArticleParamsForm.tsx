@@ -18,6 +18,7 @@ import {
 import { Separator } from '../separator/Separator';
 import { RadioGroup } from '../radio-group/RadioGroup';
 import { Text } from '../text/Text';
+import { useOutsideClickClose } from '../select/hooks/useOutsideClickClose';
 
 export const ArticleParamsForm = ({
 	changeArticleState,
@@ -28,6 +29,13 @@ export const ArticleParamsForm = ({
 }) => {
 	const [visible, setVisible] = useState(false);
 	const [params, setParams] = useState(defaultArticleState);
+	const rootRef = useRef<HTMLDivElement>(null);
+
+	useOutsideClickClose({
+		isOpen: visible,
+		rootRef,
+		onChange: setVisible,
+	});
 
 	const handleParamSelect = (
 		param: Partial<keyof ArticleStateType>,
@@ -53,8 +61,9 @@ export const ArticleParamsForm = ({
 		changeArticleState(params);
 		changeFormVisibility();
 	};
+
 	return (
-		<>
+		<div ref={rootRef}> 
 			<ArrowButton
 				onClick={changeFormVisibility}
 				isComponentVisible={visible}
@@ -115,6 +124,6 @@ export const ArticleParamsForm = ({
 					</div>
 				</form>
 			</aside>
-		</>
+		</div>
 	);
 };
