@@ -2,7 +2,7 @@ import { ArrowButton } from 'components/arrow-button';
 import { Button } from 'components/button';
 
 import styles from './ArticleParamsForm.module.scss';
-import { SyntheticEvent, useEffect, useRef, useState } from 'react';
+import { SyntheticEvent, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { Select } from '../select/Select';
 import {
@@ -63,7 +63,7 @@ export const ArticleParamsForm = ({
 	};
 
 	return (
-		<div ref={rootRef}> 
+		<div ref={rootRef}>
 			<ArrowButton
 				onClick={changeFormVisibility}
 				isComponentVisible={visible}
