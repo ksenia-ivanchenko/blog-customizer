@@ -18,7 +18,7 @@ import {
 import { Separator } from '../separator/Separator';
 import { RadioGroup } from '../radio-group/RadioGroup';
 import { Text } from '../text/Text';
-import { useOutsideClickClose } from '../select/hooks/useOutsideClickClose';
+import { useClose } from '../hooks/useClose';
 
 export const ArticleParamsForm = ({
 	changeArticleState,
@@ -27,14 +27,14 @@ export const ArticleParamsForm = ({
 	changeArticleState: (params: ArticleStateType) => void;
 	title?: string;
 }) => {
-	const [visible, setVisible] = useState(false);
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [params, setParams] = useState(defaultArticleState);
-	const rootRef = useRef<HTMLDivElement>(null);
+	const formRef = useRef<HTMLDivElement>(null);
 
-	useOutsideClickClose({
-		isOpen: visible,
-		rootRef,
-		onChange: setVisible,
+	useClose({
+		isOpen: isMenuOpen,
+		onClose: () => setIsMenuOpen(false),
+		rootRef: formRef,
 	});
 
 	const handleParamSelect = (
@@ -48,7 +48,7 @@ export const ArticleParamsForm = ({
 	};
 
 	const changeFormVisibility = () => {
-		setVisible(!visible);
+		setIsMenuOpen(!isMenuOpen);
 	};
 
 	const resetParams = () => {
@@ -63,23 +63,18 @@ export const ArticleParamsForm = ({
 	};
 
 	return (
-		<div ref={rootRef}>
+		<div ref={formRef}>
 			<ArrowButton
 				onClick={changeFormVisibility}
-				isComponentVisible={visible}
+				isComponentVisible={isMenuOpen}
 			/>
 			<aside
-				className={clsx(
-					styles.container,
-					visible ? styles.container_open : null
-				)}>
+				className={clsx(styles.container, isMenuOpen && styles.container_open)}>
 				<form className={styles.form} onSubmit={handleSubmit}>
 					{title && (
-						<>
-							<Text weight={800} size={22} uppercase>
-								{title}
-							</Text>
-						</>
+						<Text weight={800} size={22} uppercase>
+							{title}
+						</Text>
 					)}
 					<Select
 						title='шрифт'
