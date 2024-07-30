@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { RadioGroup } from './RadioGroup';
 import { useState } from 'react';
+import { ArticleStateType, OptionType } from 'src/constants/articleProps';
 
 const meta: Meta<typeof RadioGroup> = {
 	component: RadioGroup,
@@ -18,13 +19,18 @@ const RadioGroupWithState = () => {
 		{ title: '4 опция', value: '4 опция', className: '' },
 	];
 	const [selected, setSelected] = useState(options[0]);
-
 	return (
 		<>
 			<RadioGroup
 				selected={selected}
+				selectType='fontColor'
 				name='radio'
-				onChange={setSelected}
+				onChange={(
+					param: Partial<keyof ArticleStateType>,
+					value: OptionType
+				) => {
+					setSelected(value);
+				}}
 				options={options}
 				title='Название радиогруппы'
 			/>

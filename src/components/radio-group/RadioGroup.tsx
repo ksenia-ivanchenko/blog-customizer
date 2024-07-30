@@ -1,4 +1,4 @@
-import { OptionType } from 'src/constants/articleProps';
+import { ArticleStateType, OptionType } from 'src/constants/articleProps';
 import { Text } from 'components/text';
 import { Option } from './Option';
 
@@ -8,14 +8,21 @@ type RadioGroupProps = {
 	name: string;
 	options: OptionType[];
 	selected: OptionType;
-	onChange?: (value: OptionType) => void;
+	onChange?: (
+		param: Partial<keyof ArticleStateType>,
+		value: OptionType
+	) => void;
 	title: string;
+	selectType: Partial<keyof ArticleStateType>;
 };
 
 export const RadioGroup = (props: RadioGroupProps) => {
-	const { name, options, selected, onChange, title } = props;
+	const { name, options, selected, onChange, title, selectType } = props;
 
-	const handleChange = (option: OptionType) => onChange?.(option);
+	const handleChange = (
+		selectType: Partial<keyof ArticleStateType>,
+		option: OptionType
+	) => onChange?.(selectType, option);
 
 	return (
 		<div className={styles.container}>
@@ -34,7 +41,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
 						value={option.value}
 						title={option.title}
 						selected={selected}
-						onChange={() => handleChange(option)}
+						onChange={() => handleChange(selectType, option)}
 						option={option}
 					/>
 				))}

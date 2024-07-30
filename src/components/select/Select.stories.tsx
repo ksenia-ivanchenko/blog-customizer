@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Select } from './Select';
 import { useState } from 'react';
+import { ArticleStateType, OptionType } from 'src/constants/articleProps';
 
 const meta: Meta<typeof Select> = {
 	component: Select,
@@ -23,7 +24,13 @@ const SelectWithState = () => {
 		<>
 			<Select
 				selected={selected}
-				onChange={setSelected}
+				onChange={(
+					param: Partial<keyof ArticleStateType>,
+					value: OptionType
+				) => {
+					setSelected(value);
+				}}
+				selectType='fontColor'
 				options={options}
 				title='Название радиогруппы'
 			/>
